@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            text-align: center;
+            padding: 0px 40px;
+        }
+
+        .climas {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .clima {
+            background: black;
+            color: white;
+        }
+    </style>
+    <title>WEATHER EXERCISE =D!</title>
+</head>
+<body>
+    <h1>Ciudades - Climas</h1>
+    <section class="climas"> </section>
+    <script>
+        const climasSection = document.querySelector(".climas")
+        const apiURL = "https://api.gael.cloud/general/public/clima"
+
+        async function getClimas(){
+            const res = await fetch(apiURL);
+            const climas = await res.json();
+            return climas
+        }
+
+        async function renderClimas(){
+            const climas = await getClimas();
+            let template = "";
+
+            climas.forEach((clima) => {
+            template += `
+                <div class="clima">
+                    <h3>${clima.Estacion}</h3>
+                    <p>${clima.Temp}°C</p>
+                </div>
+            `
+            })
+            climasSection.innerHTML = template
+        }
+
+        renderClimas()
+    </script>
+</body>
+</html>

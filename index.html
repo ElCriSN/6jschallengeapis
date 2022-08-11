@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APIS =D!!</title>
+</head>
+<body>
+
+    <section class="user"> </section>
+    <section class="phone"> </section>
+    <section class="name"> </section>
+    <section class="city"> </section>
+    <section class="picture"> </section>
+    <script>
+        async function getSomething(){
+            
+                const res = await fetch("https://pokeapi.co/api/v2/pokemon/pikachu")
+                const data = await res.json();
+                console.log(data)
+        }
+        getSomething()
+        // async function getRandomUser(){
+        //     const res = await fetch("https://randomuser.me/api")
+        //     const data = await res.json()
+        //     console.log(data);
+        //     const element = document.querySelector(".user")
+        //     const element0 = document.querySelector(".phone")
+        //     const element1 = document.querySelector(".name")
+        //     const fullName = data.results[0]['name']
+        //     const element2 = document.querySelector(".city")
+        //     const element3 = document.querySelector(".picture")
+        //     element.innerHTML = data.results[0]['email']
+        //     element0.innerHTML = data.results[0]['phone']
+        //     element1.innerHTML = fullName.title + " " + fullName.first + " " + fullName.last
+        //     element2.innerHTML = data.results[0]['location'].city
+        //     element3.innerHTML = `<img src="${data.results[0]['picture'].large}">`
+        // }
+
+        // getRandomUser()
+    </script>
+</body>
+</html>

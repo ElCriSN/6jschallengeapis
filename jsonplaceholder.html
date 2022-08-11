@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON PLACEHOLDER EXERCISE =D!!!!!</title>
+</head>
+<style>
+    body {
+        text-align: center;
+        padding: 0px 40px;
+    }
+
+    .datas {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    .data {
+        background: black;
+        color: white;
+    }
+</style>
+
+<body>
+    <h1>=D!</h1>
+    <section class="datas"> </section>
+    <script>
+        const datasSection = document.querySelector(".datas")
+
+        async function getData() {
+            const res = await fetch("https://jsonplaceholder.typicode.com/users")
+            const datas = await res.json()
+            return datas
+        }
+
+        async function renderData(){
+            const datas = await getData()
+            let template = ""
+
+            datas.forEach((data) => {
+                template += `
+                    <div class="data">
+                        <h3>${data.name}</h3>
+                        <h4>${data.email}</h4>
+                        <p>${data.phone}</p>
+                   </div>  
+                `
+            })
+            datasSection.innerHTML = template
+        }
+
+        renderData()
+    </script>
+</body>
+
+</html>
